@@ -21,3 +21,9 @@ class VenderListView(TemplateView):
     template_name = 'VendorList.html'
 
 
+
+class DashboardViewList(TemplateView):
+    template_name = 'Dashboard.html'
+
+class TaskViewList(TemplateView):
+    template_name = 'Task.html'
