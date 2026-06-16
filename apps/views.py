@@ -27,3 +27,10 @@ class DashboardView(TemplateView):
 
 class TaskView(TemplateView):
     template_name = 'Task.html'
+class GuestAddCreateView(TemplateView):
+    template_name = 'GuestAdd.html'
+
+
+class GuestListView(TemplateView):
+    template_name = 'GuestList.html'
+
