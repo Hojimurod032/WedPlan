@@ -47,18 +47,15 @@
             <h1>Welcome back</h1>
             <p class="auth-sub">Log in to keep planning your big day.</p>
 
-            <form>
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
                 <div class="field">
-                    <label for="email">Email address</label>
-                    <input type="email" id="email" placeholder="you@example.com">
+                    <label for="email">Phone number</label>
+                    <input type="text" name="phone_number" placeholder="+998 (00) 999 99 99">
                 </div>
                 <div class="field">
                     <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter your password">
-                </div>
-                <div class="row-between">
-                    <label class="checkbox-line"><input type="checkbox"> Remember me</label>
-                    <a href="#" class="link-sage">Forgot password?</a>
+                    <input type="password" name="password" placeholder="Enter your password">
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Log in</button>
             </form>
@@ -66,7 +63,7 @@
             <div class="divider">or continue with</div>
             <button type="button" class="btn btn-outline btn-block">Continue with Google</button>
 
-            <p class="auth-foot">Don't have an account? <a href="#" class="link-sage">Sign up free</a></p>
+            <p class="auth-foot">Don't have an account? <a href="{% url 'register' %}" class="link-sage">Sign up free</a></p>
         </div>
     </section>
 {% endblock %}

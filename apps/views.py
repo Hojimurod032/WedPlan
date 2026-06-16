@@ -1,13 +1,46 @@
+from django.contrib import messages
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, CreateView, FormView
+
+from apps.forms import RegisterForm, LoginForm
+from apps.models import User
 
 
-class LoginViewList(TemplateView):
+class LoginViewList(FormView):
+    form_class = LoginForm
     template_name = 'Auth/Login.html'
+    success_url = reverse_lazy('home')
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["request"] = self.request
+        return kwargs
+
+    def form_valid(self, form):
+        messages.success(self.request, "Hush kelibsiz")
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        for error_messege in form.errors.values():
+            messages.error(self.request, error_messege)
+        return super().form_invalid(form)
 
 
-class RegisterViewList(TemplateView):
+class RegisterViewList(CreateView):
+    form_class = RegisterForm
+    queryset = User.objects.all()
     template_name = 'Auth/Register.html'
+    success_url = reverse_lazy('login')
+
+    def form_valid(self, form):
+        messages.success(self.request, "Muffaqaiyati royxatdan otildi")
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        for error_messege in form.errors.values():
+            messages.error(self.request, error_messege)
+        return super().form_invalid(form)
 
 
 class HomeViewList(TemplateView):
@@ -44,6 +77,7 @@ class GuestAddCreateView(TemplateView):
 
 class GuestListView(TemplateView):
     template_name = 'GuestList.html'
+
 
 class BudgetListView(TemplateView):
     template_name = 'BudgetList.html'
