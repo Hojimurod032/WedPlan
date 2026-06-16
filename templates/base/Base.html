@@ -354,7 +354,7 @@
 
 <nav class="navbar">
     <div class="nav-inner">
-        <a href="#" class="brand"><span class="dot">&#10047;</span> Évoque</a>
+        <a href="{% url 'home' %}" class="brand"><span class="dot">&#10047;</span> Évoque</a>
         <ul class="nav-links" id="navLinks">
             <li><a href="{% url 'home' %}" class="active">Home</a></li>
             <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
@@ -388,9 +388,9 @@
         <div class="footer-col">
             <h4>Plan</h4>
             <ul>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Guest list</a></li>
-                <li><a href="#">Budget</a></li>
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'guest-list' %}">Guest list</a></li>
+                <li><a href="{% url 'budget-list' %}">Budget</a></li>
                 <li><a href="#">Checklist</a></li>
             </ul>
         </div>
