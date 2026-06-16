@@ -12,3 +12,11 @@ class RegisterViewList(TemplateView):
 class HomeViewList(TemplateView):
     template_name = 'Home.html'
 
+
+class GuestAddCreateView(TemplateView):
+    template_name = 'GuestAdd.html'
+
+
+class GuestListView(TemplateView):
+    template_name = 'GuestList.html'
+
