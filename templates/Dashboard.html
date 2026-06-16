@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — Évoque{% endblock %}
+
+{% block extra_style %}
+    .dash-section{padding:48px 24px 80px;}
+    .dash-head{
+    display:flex;align-items:flex-end;justify-content:space-between;
+    flex-wrap:wrap;gap:20px;margin-bottom:36px;
+    }
+    .dash-head h1{font-size:2rem;margin-bottom:4px;}
+    .dash-head p{color:var(--ink-soft);margin:0;}
+
+    .countdown-card{
+    background:linear-gradient(135deg, var(--sage-deep), #4d6142);
+    border-radius:var(--radius-lg);padding:36px 40px;color:var(--white);
+    display:flex;align-items:center;justify-content:space-between;
+    flex-wrap:wrap;gap:24px;margin-bottom:32px;position:relative;overflow:hidden;
+    }
+    .countdown-card::before{
+    content:"";position:absolute;width:260px;height:260px;border-radius:50%;
+    background:rgba(255,255,255,0.06);top:-100px;right:-60px;
+    }
+    .countdown-info .tag{
+    background:rgba(255,255,255,0.18);padding:5px 14px;border-radius:999px;
+    font-size:0.78rem;font-weight:700;margin-bottom:12px;display:inline-block;
+    }
+    .countdown-info h2{color:var(--white);font-size:1.6rem;margin-bottom:4px;}
+    .countdown-info p{color:rgba(255,255,255,0.8);margin:0;font-size:0.92rem;}
+    .countdown-number{display:flex;gap:18px;position:relative;z-index:2;}
+    .countdown-block{text-align:center;min-width:64px;}
+    .countdown-block strong{font-family:'Fraunces',serif;font-size:2.2rem;display:block;}
+    .countdown-block span{font-size:0.75rem;color:rgba(255,255,255,0.75);}
+
+    .stats-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:36px;
+    }
+    .stat-card{
+    background:var(--white);border-radius:var(--radius-lg);padding:26px;
+    box-shadow:var(--shadow-card);
+    }
+    .stat-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+    .stat-icon{
+    width:42px;height:42px;border-radius:12px;display:flex;align-items:center;
+    justify-content:center;font-size:1.2rem;
+    }
+    .stat-icon.sage{background:var(--sage-pale);color:var(--sage-deep);}
+    .stat-icon.blush{background:var(--blush);color:#9B5A47;}
+    .stat-icon.gold{background:#F8EFD9;color:var(--gold);}
+    .stat-trend{font-size:0.78rem;font-weight:700;color:var(--sage-deep);background:var(--sage-pale);padding:3px
+    10px;border-radius:999px;}
+    .stat-card h3{font-family:'Fraunces',serif;font-size:1.9rem;margin-bottom:2px;}
+    .stat-card p{color:var(--ink-soft);font-size:0.9rem;margin:0;}
+    .progress-bar{height:6px;background:var(--cream-deep);border-radius:999px;margin-top:14px;overflow:hidden;}
+    .progress-fill{height:100%;border-radius:999px;background:var(--sage-deep);}
+
+    .dash-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;}
+    .panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+    .panel-head h3{font-size:1.15rem;margin:0;}
+    .quick-actions{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    .qa-btn{
+    background:var(--cream);border:1.5px solid rgba(43,42,38,0.08);
+    border-radius:var(--radius-md);padding:18px;text-align:left;
+    display:flex;flex-direction:column;gap:8px;transition:.2s;
+    }
+    .qa-btn:hover{border-color:var(--sage-deep);background:var(--sage-pale);}
+    .qa-btn .qa-icon{font-size:1.3rem;}
+    .qa-btn span{font-weight:600;font-size:0.92rem;}
+
+    .task-mini{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid rgba(43,42,38,0.06);}
+    .task-mini:last-child{border-bottom:none;}
+    .task-check{
+    width:20px;height:20px;border-radius:6px;border:2px solid var(--sage-deep);
+    flex-shrink:0;display:flex;align-items:center;justify-content:center;
+    }
+    .task-check.done{background:var(--sage-deep);color:#fff;font-size:0.7rem;}
+    .task-mini p{margin:0;font-size:0.92rem;}
+    .task-mini span{font-size:0.78rem;color:var(--ink-soft);}
+    .task-mini.done p{text-decoration:line-through;color:var(--ink-soft);}
+
+    @media (max-width:900px){
+    .stats-grid{grid-template-columns:1fr;}
+    .dash-grid{grid-template-columns:1fr;}
+    .countdown-card{flex-direction:column;align-items:flex-start;}
+    }
+{% endblock %}
+
+{% block content %}
+    <section class="dash-section">
+        <div class="wrap">
+            <div class="dash-head">
+                <div>
+                    <h1>Welcome back, Amara &amp; James</h1>
+                    <p>Here's where your wedding planning stands today.</p>
+                </div>
+                <a href="#" class="btn btn-primary">+ Add task</a>
+            </div>
+
+            <div class="countdown-card">
+                <div class="countdown-info">
+                    <span class="tag">Saturday · October 17, 2026</span>
+                    <h2>Lakeview Gardens</h2>
+                    <p>You're right on track — keep going.</p>
+                </div>
+                <div class="countdown-number">
+                    <div class="countdown-block"><strong>128</strong><span>Days</span></div>
+                    <div class="countdown-block"><strong>14</strong><span>Hours</span></div>
+                    <div class="countdown-block"><strong>32</strong><span>Minutes</span></div>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <div class="stat-icon sage">&#128101;</div>
+                        <span class="stat-trend">86 / 120</span>
+                    </div>
+                    <h3>86 Guests</h3>
+                    <p>Confirmed attendance</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width:72%;"></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <div class="stat-icon blush">&#128176;</div>
+                        <span class="stat-trend">62%</span>
+                    </div>
+                    <h3>$24,600</h3>
+                    <p>Spent of $40,000 budget</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width:62%;background:#C9786A;"></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <div class="stat-icon gold">&#9989;</div>
+                        <span class="stat-trend">28 / 42</span>
+                    </div>
+                    <h3>14 Tasks left</h3>
+                    <p>Of 42 total tasks</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width:66%;background:var(--gold);"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dash-grid">
+                <div class="card">
+                    <div class="panel-head">
+                        <h3>Quick actions</h3>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="qa-btn"><span class="qa-icon">&#128101;</span><span>Add a guest</span></button>
+                        <button class="qa-btn"><span class="qa-icon">&#128176;</span><span>Log an expense</span>
+                        </button>
+                        <button class="qa-btn"><span class="qa-icon">&#9989;</span><span>Create a task</span></button>
+                        <button class="qa-btn"><span class="qa-icon">&#127881;</span><span>Browse vendors</span>
+                        </button>
+                        <button class="qa-btn"><span class="qa-icon">&#128231;</span><span>Send invitations</span>
+                        </button>
+                        <button class="qa-btn"><span class="qa-icon">&#128203;</span><span>View timeline</span></button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="panel-head">
+                        <h3>Upcoming tasks</h3>
+                        <a href="#" class="btn btn-ghost btn-sm">View all</a>
+                    </div>
+                    <div class="task-mini done">
+                        <div class="task-check done">&#10003;</div>
+                        <div><p>Book photographer</p><span>Completed last week</span></div>
+                    </div>
+                    <div class="task-mini">
+                        <div class="task-check"></div>
+                        <div><p>Finalize seating chart</p><span>Due in 5 days</span></div>
+                    </div>
+                    <div class="task-mini">
+                        <div class="task-check"></div>
+                        <div><p>Order wedding favors</p><span>Due in 9 days</span></div>
+                    </div>
+                    <div class="task-mini">
+                        <div class="task-check"></div>
+                        <div><p>Confirm catering headcount</p><span>Due in 14 days</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

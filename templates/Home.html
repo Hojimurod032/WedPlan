@@ -1,0 +1,194 @@
+{% extends "base/Base.html" %}
+{% block title %}Évoque — Plan your wedding with calm{% endblock %}
+
+{% block extra_style %}
+    .hero{
+    position:relative;
+    padding:90px 24px 70px;
+    overflow:hidden;
+    }
+    .hero-inner{
+    max-width:var(--maxw);margin:0 auto;
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:50px;align-items:center;
+    }
+    .hero-eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--sage-pale);color:var(--sage-deep);
+    padding:7px 16px;border-radius:999px;
+    font-size:0.82rem;font-weight:700;letter-spacing:0.04em;
+    margin-bottom:22px;
+    }
+    .hero h1{
+    font-size:clamp(2.4rem, 4.4vw, 3.6rem);
+    line-height:1.08;
+    margin-bottom:20px;
+    }
+    .hero h1 em{
+    font-style:italic;color:var(--sage-deep);
+    }
+    .hero p.lead{
+    font-size:1.1rem;color:var(--ink-soft);max-width:480px;margin-bottom:32px;
+    }
+    .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+    .hero-stats{display:flex;gap:34px;margin-top:42px;}
+    .hero-stats div strong{font-family:'Fraunces',serif;font-size:1.6rem;display:block;color:var(--ink);}
+    .hero-stats div span{font-size:0.82rem;color:var(--ink-soft);}
+
+    .hero-visual{position:relative;}
+    .hero-card{
+    background:var(--white);border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-soft);padding:26px;
+    position:relative;z-index:2;
+    }
+    .hero-card .tag{
+    display:inline-block;background:var(--blush);color:#9B5A47;
+    padding:4px 12px;border-radius:999px;font-size:0.75rem;font-weight:700;margin-bottom:14px;
+    }
+    .hero-card h3{font-size:1.3rem;margin-bottom:4px;}
+    .hero-card p{color:var(--ink-soft);font-size:0.9rem;margin:0 0 18px;}
+    .hero-card-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .hero-mini{
+    background:var(--cream-deep);border-radius:var(--radius-sm);
+    padding:14px;text-align:center;
+    }
+    .hero-mini strong{font-family:'Fraunces',serif;font-size:1.4rem;display:block;color:var(--sage-deep);}
+    .hero-mini span{font-size:0.75rem;color:var(--ink-soft);}
+    .hero-blob{
+    position:absolute;width:340px;height:340px;border-radius:50%;
+    background:radial-gradient(circle, var(--sage-pale) 0%, transparent 70%);
+    top:-60px;right:-60px;z-index:1;
+    }
+
+    .section{padding:70px 24px;}
+    .section-head{max-width:620px;margin:0 auto 48px;text-align:center;}
+    .section-head .eyebrow{
+    color:var(--sage-deep);font-weight:700;font-size:0.82rem;letter-spacing:0.06em;
+    text-transform:uppercase;margin-bottom:10px;display:block;
+    }
+    .section-head h2{font-size:clamp(1.8rem,3vw,2.4rem);}
+    .section-head p{color:var(--ink-soft);}
+
+    .features-grid{
+    max-width:var(--maxw);margin:0 auto;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:26px;
+    }
+    .feature-card{
+    background:var(--white);border-radius:var(--radius-lg);
+    padding:30px;box-shadow:var(--shadow-card);
+    transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .feature-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-soft);}
+    .feature-icon{
+    width:50px;height:50px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;margin-bottom:18px;
+    }
+    .feature-icon.sage{background:var(--sage-pale);color:var(--sage-deep);}
+    .feature-icon.blush{background:var(--blush);color:#9B5A47;}
+    .feature-icon.gold{background:#F8EFD9;color:var(--gold);}
+    .feature-card h3{font-size:1.15rem;margin-bottom:8px;}
+    .feature-card p{color:var(--ink-soft);font-size:0.92rem;margin:0;}
+
+    .cta-band{
+    max-width:var(--maxw);margin:0 auto;
+    background:var(--sage-deep);border-radius:28px;
+    padding:60px 50px;text-align:center;color:var(--white);
+    position:relative;overflow:hidden;
+    }
+    .cta-band h2{color:var(--white);font-size:clamp(1.8rem,3vw,2.3rem);}
+    .cta-band p{color:rgba(255,255,255,0.85);max-width:460px;margin:0 auto 28px;}
+    .cta-band .btn-primary{background:var(--white);color:var(--sage-deep);}
+    .cta-band .btn-primary:hover{background:var(--cream);}
+
+    @media (max-width:900px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-visual{order:-1;}
+    .features-grid{grid-template-columns:1fr;}
+    .hero-stats{justify-content:space-between;}
+    }
+{% endblock %}
+
+{% block content %}
+    <section class="hero">
+        <div class="hero-blob"></div>
+        <div class="hero-inner">
+            <div>
+                <span class="hero-eyebrow">✦ Wedding planning, simplified</span>
+                <h1>Plan your big day <em>without</em> the chaos</h1>
+                <p class="lead">Guests, budget, vendors and tasks — organised in one calm, beautiful place so you can
+                    actually enjoy the countdown.</p>
+                <div class="hero-cta">
+                    <a href="#" class="btn btn-primary">Get started — it's free</a>
+                    <a href="#" class="btn btn-outline">Log in</a>
+                </div>
+                <div class="hero-stats">
+                    <div><strong>12,400+</strong><span>Weddings planned</span></div>
+                    <div><strong>98%</strong><span>On-budget couples</span></div>
+                    <div><strong>4.9/5</strong><span>Average rating</span></div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <span class="tag">128 days to go</span>
+                    <h3>Amara &amp; James</h3>
+                    <p>Saturday, October 17 · Lakeview Gardens</p>
+                    <div class="hero-card-grid">
+                        <div class="hero-mini"><strong>86</strong><span>Guests confirmed</span></div>
+                        <div class="hero-mini"><strong>$24.6k</strong><span>Budget spent</span></div>
+                        <div class="hero-mini"><strong>14</strong><span>Tasks left</span></div>
+                        <div class="hero-mini"><strong>6</strong><span>Vendors booked</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-head">
+            <span class="eyebrow">Everything in one place</span>
+            <h2>Built for the way real couples plan</h2>
+            <p>No spreadsheets, no scattered group chats — just the tools you need, designed to feel as good as your big
+                day will.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon sage">&#128101;</div>
+                <h3>Guest list, sorted</h3>
+                <p>Track RSVPs, meal choices and seating in one searchable list with live status badges.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon blush">&#128176;</div>
+                <h3>Budget that behaves</h3>
+                <p>See spend by category at a glance and know exactly where every dollar is going.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon gold">&#9989;</div>
+                <h3>Tasks &amp; timelines</h3>
+                <p>A checklist that adapts to your wedding date, so nothing slips through the cracks.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon sage">&#127881;</div>
+                <h3>Trusted vendors</h3>
+                <p>Browse photographers, florists and caterers, filtered by style, location and price.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon blush">&#128231;</div>
+                <h3>Beautiful invitations</h3>
+                <p>Design and share digital invitations your guests will actually want to open.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon gold">&#9203;</div>
+                <h3>Live countdown</h3>
+                <p>A gentle daily reminder of how far you've come — and how close the day is.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="cta-band">
+            <h2>Ready to plan the wedding you actually want?</h2>
+            <p>Join thousands of couples planning calmer, more organised weddings with Évoque.</p>
+            <a href="#" class="btn btn-primary">Create your free account</a>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "base/Base.html" %}
+{% block title %}Log in — Évoque{% endblock %}
+
+{% block extra_style %}
+    .auth-section{
+    min-height:80vh;display:flex;align-items:center;justify-content:center;
+    padding:60px 24px;
+    }
+    .auth-card{
+    width:100%;max-width:420px;
+    background:var(--white);border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-soft);padding:44px 38px;
+    border:1px solid rgba(43,42,38,0.04);
+    }
+    .auth-icon{
+    width:54px;height:54px;border-radius:16px;background:var(--sage-pale);
+    display:flex;align-items:center;justify-content:center;font-size:1.5rem;
+    margin:0 auto 18px;
+    }
+    .auth-card h1{font-size:1.6rem;text-align:center;margin-bottom:6px;}
+    .auth-sub{text-align:center;color:var(--ink-soft);font-size:0.92rem;margin-bottom:30px;}
+    .field{margin-bottom:18px;}
+    .field label{display:block;font-size:0.85rem;font-weight:600;margin-bottom:7px;color:var(--ink);}
+    .field input{
+    width:100%;padding:13px 16px;border-radius:var(--radius-sm);
+    border:1.5px solid rgba(43,42,38,0.12);
+    font-family:'Plus Jakarta Sans', sans-serif;font-size:0.95rem;
+    background:var(--cream);transition:border-color .2s ease;
+    }
+    .field input:focus{outline:none;border-color:var(--sage-deep);background:var(--white);}
+    .row-between{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;font-size:0.85rem;}
+    .checkbox-line{display:flex;align-items:center;gap:8px;color:var(--ink-soft);}
+    .checkbox-line input{width:auto;}
+    .link-sage{color:var(--sage-deep);font-weight:600;}
+    .divider{
+    display:flex;align-items:center;gap:12px;margin:26px 0;
+    color:var(--ink-soft);font-size:0.82rem;
+    }
+    .divider::before, .divider::after{content:"";flex:1;height:1px;background:rgba(43,42,38,0.1);}
+    .auth-foot{text-align:center;margin-top:24px;font-size:0.9rem;color:var(--ink-soft);}
+{% endblock %}
+
+{% block content %}
+    <section class="auth-section">
+        <div class="auth-card">
+            <div class="auth-icon">&#10047;</div>
+            <h1>Welcome back</h1>
+            <p class="auth-sub">Log in to keep planning your big day.</p>
+
+            <form>
+                <div class="field">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" placeholder="you@example.com">
+                </div>
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                </div>
+                <div class="row-between">
+                    <label class="checkbox-line"><input type="checkbox"> Remember me</label>
+                    <a href="#" class="link-sage">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Log in</button>
+            </form>
+
+            <div class="divider">or continue with</div>
+            <button type="button" class="btn btn-outline btn-block">Continue with Google</button>
+
+            <p class="auth-foot">Don't have an account? <a href="#" class="link-sage">Sign up free</a></p>
+        </div>
+    </section>
+{% endblock %}

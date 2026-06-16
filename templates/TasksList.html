@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block title %}Tasks — Évoque{% endblock %}
+
+{% block extra_style %}
+.page-section{padding:48px 24px 80px;}
+.page-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  flex-wrap:wrap;gap:20px;margin-bottom:30px;
+}
+.page-head h1{font-size:2rem;margin-bottom:4px;}
+.page-head p{color:var(--ink-soft);margin:0;}
+
+.progress-summary{
+  display:flex;align-items:center;gap:20px;margin-bottom:30px;
+}
+.progress-ring-card{
+  display:flex;align-items:center;gap:18px;background:var(--white);
+  border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:20px 26px;flex:1;
+}
+.progress-circle{
+  width:64px;height:64px;border-radius:50%;flex-shrink:0;
+  background:conic-gradient(var(--sage-deep) 0% 66%, var(--cream-deep) 66% 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+.progress-circle span{
+  width:48px;height:48px;border-radius:50%;background:var(--white);
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;color:var(--sage-deep);
+}
+.progress-ring-card p{margin:0;color:var(--ink-soft);font-size:0.88rem;}
+.progress-ring-card strong{display:block;font-size:1.1rem;}
+
+.filter-tabs{display:flex;gap:10px;margin-bottom:22px;flex-wrap:wrap;}
+.tab{
+  padding:9px 18px;border-radius:999px;font-size:0.85rem;font-weight:600;
+  background:var(--white);border:1.5px solid rgba(43,42,38,0.1);color:var(--ink-soft);cursor:pointer;
+}
+.tab.active{background:var(--sage-deep);color:var(--white);border-color:var(--sage-deep);}
+
+.task-list{display:flex;flex-direction:column;gap:14px;}
+.task-card{
+  display:flex;align-items:flex-start;gap:16px;background:var(--white);
+  border-radius:var(--radius-md);box-shadow:var(--shadow-card);padding:18px 22px;
+}
+.task-card.done{opacity:0.6;}
+.task-checkbox{
+  width:24px;height:24px;border-radius:8px;border:2px solid var(--sage-deep);
+  flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;cursor:pointer;
+}
+.task-checkbox.checked{background:var(--sage-deep);color:#fff;font-size:0.8rem;}
+.task-body{flex:1;}
+.task-body h4{font-size:1rem;margin-bottom:4px;}
+.task-card.done h4{text-decoration:line-through;color:var(--ink-soft);}
+.task-body p{margin:0;color:var(--ink-soft);font-size:0.86rem;}
+.task-meta{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap;}
+.task-tag{
+  font-size:0.74rem;font-weight:700;padding:4px 10px;border-radius:999px;
+}
+.tag-high{background:#F7E4E1;color:#A2473A;}
+.tag-medium{background:#FBF1DD;color:#A6792B;}
+.tag-low{background:var(--sage-pale);color:var(--sage-deep);}
+.task-due{font-size:0.78rem;color:var(--ink-soft);}
+
+@media (max-width:560px){
+  .task-card{flex-direction:row;padding:16px;}
+}
+{% endblock %}
+
+{% block content %}
+<section class="page-section">
+  <div class="wrap">
+    <div class="page-head">
+      <div>
+        <h1>Wedding checklist</h1>
+        <p>28 of 42 tasks completed</p>
+      </div>
+      <a href="#" class="btn btn-primary">+ Add task</a>
+    </div>
+
+    <div class="progress-summary">
+      <div class="progress-ring-card">
+        <div class="progress-circle"><span>66%</span></div>
+        <div><strong>You're on track</strong><p>14 tasks remaining before the big day</p></div>
+      </div>
+    </div>
+
+    <div class="filter-tabs">
+      <span class="tab active">All (42)</span>
+      <span class="tab">To do (14)</span>
+      <span class="tab">Completed (28)</span>
+      <span class="tab">High priority (5)</span>
+    </div>
+
+    <div class="task-list">
+      <div class="task-card done">
+        <div class="task-checkbox checked">&#10003;</div>
+        <div class="task-body">
+          <h4>Book photographer</h4>
+          <p>Confirmed full-day package with deposit paid.</p>
+          <div class="task-meta"><span class="task-tag tag-low">Low priority</span><span class="task-due">Completed 6 days ago</span></div>
+        </div>
+      </div>
+      <div class="task-card">
+        <div class="task-checkbox"></div>
+        <div class="task-body">
+          <h4>Finalize seating chart</h4>
+          <p>Assign tables for confirmed guests and finalize layout.</p>
+          <div class="task-meta"><span class="task-tag tag-high">High priority</span><span class="task-due">Due in 5 days</span></div>
+        </div>
+      </div>
+      <div class="task-card">
+        <div class="task-checkbox"></div>
+        <div class="task-body">
+          <h4>Order wedding favors</h4>
+          <p>Choose and order favors for 120 guests.</p>
+          <div class="task-meta"><span class="task-tag tag-medium">Medium priority</span><span class="task-due">Due in 9 days</span></div>
+        </div>
+      </div>
+      <div class="task-card">
+        <div class="task-checkbox"></div>
+        <div class="task-body">
+          <h4>Confirm catering headcount</h4>
+          <p>Send final guest count to catering team.</p>
+          <div class="task-meta"><span class="task-tag tag-high">High priority</span><span class="task-due">Due in 14 days</span></div>
+        </div>
+      </div>
+      <div class="task-card done">
+        <div class="task-checkbox checked">&#10003;</div>
+        <div class="task-body">
+          <h4>Send save-the-dates</h4>
+          <p>Mailed to all 120 guests on the list.</p>
+          <div class="task-meta"><span class="task-tag tag-low">Low priority</span><span class="task-due">Completed 3 weeks ago</span></div>
+        </div>
+      </div>
+      <div class="task-card">
+        <div class="task-checkbox"></div>
+        <div class="task-body">
+          <h4>Schedule hair &amp; makeup trial</h4>
+          <p>Book trial session before final fitting.</p>
+          <div class="task-meta"><span class="task-tag tag-medium">Medium priority</span><span class="task-due">Due in 18 days</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

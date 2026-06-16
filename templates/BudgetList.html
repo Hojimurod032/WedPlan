@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% block title %}Budget — Évoque{% endblock %}
+
+{% block extra_style %}
+.page-section{padding:48px 24px 80px;}
+.page-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  flex-wrap:wrap;gap:20px;margin-bottom:30px;
+}
+.page-head h1{font-size:2rem;margin-bottom:4px;}
+.page-head p{color:var(--ink-soft);margin:0;}
+
+.budget-grid{display:grid;grid-template-columns:0.9fr 1.4fr;gap:24px;margin-bottom:28px;}
+
+.chart-card{padding:30px;display:flex;flex-direction:column;align-items:center;}
+.chart-card h3{font-size:1.1rem;align-self:flex-start;margin-bottom:18px;}
+.pie-placeholder{
+  width:200px;height:200px;border-radius:50%;
+  background:conic-gradient(
+    var(--sage-deep) 0% 38%,
+    var(--blush) 38% 60%,
+    var(--gold) 60% 76%,
+    var(--sage-pale) 76% 90%,
+    #E3DCCB 90% 100%
+  );
+  position:relative;margin-bottom:22px;
+}
+.pie-placeholder::after{
+  content:"";position:absolute;inset:32px;border-radius:50%;background:var(--white);
+}
+.pie-center{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.pie-center strong{font-family:'Fraunces',serif;font-size:1.5rem;}
+.pie-center span{font-size:0.72rem;color:var(--ink-soft);}
+.legend{width:100%;display:flex;flex-direction:column;gap:10px;}
+.legend-row{display:flex;align-items:center;justify-content:space-between;font-size:0.88rem;}
+.legend-row .dot-label{display:flex;align-items:center;gap:10px;}
+.legend-dot{width:11px;height:11px;border-radius:50%;}
+
+.summary-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:18px;}
+.summary-card{background:var(--white);border-radius:var(--radius-md);padding:20px;box-shadow:var(--shadow-card);}
+.summary-card span{font-size:0.8rem;color:var(--ink-soft);}
+.summary-card strong{display:block;font-family:'Fraunces',serif;font-size:1.5rem;margin-top:4px;}
+.summary-card.total strong{color:var(--ink);}
+.summary-card.spent strong{color:#9B5A47;}
+.summary-card.left strong{color:var(--sage-deep);}
+
+.budget-table-card{padding:0;overflow:hidden;}
+.budget-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 26px;border-bottom:1px solid rgba(43,42,38,0.06);
+}
+.budget-row:last-child{border-bottom:none;}
+.budget-left{display:flex;align-items:center;gap:14px;}
+.cat-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
+.budget-left strong{display:block;font-size:0.95rem;}
+.budget-left small{color:var(--ink-soft);font-size:0.8rem;}
+.budget-right{text-align:right;}
+.budget-right strong{display:block;font-size:0.95rem;}
+.budget-right small{color:var(--ink-soft);font-size:0.78rem;}
+.mini-bar{width:120px;height:6px;border-radius:999px;background:var(--cream-deep);margin-top:6px;overflow:hidden;}
+.mini-bar-fill{height:100%;border-radius:999px;}
+
+@media (max-width:900px){
+  .budget-grid{grid-template-columns:1fr;}
+  .summary-cards{grid-template-columns:1fr;}
+}
+@media (max-width:600px){
+  .budget-row{flex-direction:column;align-items:flex-start;gap:10px;}
+  .budget-right{text-align:left;}
+  .mini-bar{width:100%;}
+}
+{% endblock %}
+
+{% block content %}
+<section class="page-section">
+  <div class="wrap">
+    <div class="page-head">
+      <div>
+        <h1>Budget</h1>
+        <p>Track spending across every wedding category.</p>
+      </div>
+      <a href="#" class="btn btn-primary">+ Add expense</a>
+    </div>
+
+    <div class="budget-grid">
+      <div class="card chart-card">
+        <h3>Spending by category</h3>
+        <div class="pie-placeholder">
+          <div class="pie-center"><strong>62%</strong><span>of budget used</span></div>
+        </div>
+        <div class="legend">
+          <div class="legend-row"><div class="dot-label"><span class="legend-dot" style="background:var(--sage-deep);"></span>Venue</div><span>38%</span></div>
+          <div class="legend-row"><div class="dot-label"><span class="legend-dot" style="background:var(--blush);"></span>Catering</div><span>22%</span></div>
+          <div class="legend-row"><div class="dot-label"><span class="legend-dot" style="background:var(--gold);"></span>Photography</div><span>16%</span></div>
+          <div class="legend-row"><div class="dot-label"><span class="legend-dot" style="background:var(--sage-pale);"></span>Décor</div><span>14%</span></div>
+          <div class="legend-row"><div class="dot-label"><span class="legend-dot" style="background:#E3DCCB;"></span>Other</div><span>10%</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="summary-cards">
+          <div class="summary-card total"><span>Total budget</span><strong>$40,000</strong></div>
+          <div class="summary-card spent"><span>Spent so far</span><strong>$24,600</strong></div>
+          <div class="summary-card left"><span>Remaining</span><strong>$15,400</strong></div>
+        </div>
+
+        <div class="card budget-table-card">
+          <div class="budget-row">
+            <div class="budget-left">
+              <span class="cat-dot" style="background:var(--sage-deep);"></span>
+              <div><strong>Venue &amp; rentals</strong><small>Lakeview Gardens</small></div>
+            </div>
+            <div class="budget-right">
+              <strong>$9,400 / $10,000</strong>
+              <div class="mini-bar"><div class="mini-bar-fill" style="width:94%;background:var(--sage-deep);"></div></div>
+            </div>
+          </div>
+          <div class="budget-row">
+            <div class="budget-left">
+              <span class="cat-dot" style="background:var(--blush);"></span>
+              <div><strong>Catering</strong><small>120 guests · plated dinner</small></div>
+            </div>
+            <div class="budget-right">
+              <strong>$5,400 / $8,800</strong>
+              <div class="mini-bar"><div class="mini-bar-fill" style="width:61%;background:#C9786A;"></div></div>
+            </div>
+          </div>
+          <div class="budget-row">
+            <div class="budget-left">
+              <span class="cat-dot" style="background:var(--gold);"></span>
+              <div><strong>Photography &amp; video</strong><small>Full-day coverage</small></div>
+            </div>
+            <div class="budget-right">
+              <strong>$3,900 / $6,400</strong>
+              <div class="mini-bar"><div class="mini-bar-fill" style="width:61%;background:var(--gold);"></div></div>
+            </div>
+          </div>
+          <div class="budget-row">
+            <div class="budget-left">
+              <span class="cat-dot" style="background:var(--sage-pale);"></span>
+              <div><strong>Décor &amp; flowers</strong><small>Centerpieces, arch, lighting</small></div>
+            </div>
+            <div class="budget-right">
+              <strong>$3,400 / $5,600</strong>
+              <div class="mini-bar"><div class="mini-bar-fill" style="width:61%;background:#9DB58F;"></div></div>
+            </div>
+          </div>
+          <div class="budget-row">
+            <div class="budget-left">
+              <span class="cat-dot" style="background:#E3DCCB;"></span>
+              <div><strong>Attire &amp; misc.</strong><small>Dress, suit, accessories</small></div>
+            </div>
+            <div class="budget-right">
+              <strong>$2,500 / $4,200</strong>
+              <div class="mini-bar"><div class="mini-bar-fill" style="width:60%;background:#B7AC8E;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

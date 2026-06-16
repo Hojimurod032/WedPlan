@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Amara & James — You're Invited{% endblock %}
+
+{% block extra_style %}
+    .share-section{
+    min-height:88vh;display:flex;align-items:center;justify-content:center;
+    padding:60px 24px;background:linear-gradient(160deg, #FBF6EE, var(--sage-pale));
+    }
+    .invite-card{
+    max-width:560px;width:100%;background:var(--white);border-radius:28px;
+    box-shadow:var(--shadow-soft);padding:64px 50px;text-align:center;
+    border:1px solid rgba(43,42,38,0.05);position:relative;
+    }
+    .invite-card::before{
+    content:"";position:absolute;inset:18px;border:1.5px solid
+    rgba(124,144,112,0.3);border-radius:20px;pointer-events:none;
+    }
+    .invite-orn{font-size:1.8rem;color:var(--sage-deep);margin-bottom:20px;}
+    .invite-pretitle{font-family:'Fraunces',serif;font-style:italic;color:var(--ink-soft);font-size:1.05rem;margin-bottom:10px;}
+    .invite-names{font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,2.8rem);margin-bottom:22px;}
+    .invite-message{color:var(--ink-soft);font-size:1rem;max-width:380px;margin:0 auto 30px;}
+    .invite-divider{width:50px;height:2px;background:var(--gold);margin:0 auto 28px;}
+    .invite-details{display:flex;justify-content:center;gap:40px;margin-bottom:36px;flex-wrap:wrap;}
+    .invite-detail strong{display:block;font-family:'Fraunces',serif;font-size:1.15rem;margin-bottom:4px;}
+    .invite-detail span{font-size:0.8rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.04em;}
+    .invite-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    .invite-foot{margin-top:34px;font-size:0.82rem;color:var(--ink-soft);}
+
+    @media (max-width:560px){
+    .invite-card{padding:48px 26px;}
+    .invite-details{gap:24px;}
+    }
+{% endblock %}
+
+{% block content %}
+    <section class="share-section">
+        <div class="invite-card">
+            <div class="invite-orn">&#10047;</div>
+            <p class="invite-pretitle">Together with their families</p>
+            <h1 class="invite-names">Amara &amp; James</h1>
+            <p class="invite-message">Joyfully invite you to celebrate their wedding. Your presence would mean the world
+                to us as we begin this new chapter together.</p>
+            <div class="invite-divider"></div>
+            <div class="invite-details">
+                <div class="invite-detail"><strong>Oct 17, 2026</strong><span>Date</span></div>
+                <div class="invite-detail"><strong>4:00 PM</strong><span>Time</span></div>
+                <div class="invite-detail"><strong>Lakeview Gardens</strong><span>Venue</span></div>
+            </div>
+            <div class="invite-cta">
+                <a href="#" class="btn btn-primary">Confirm attendance</a>
+                <a href="#" class="btn btn-outline">Can't make it</a>
+            </div>
+            <p class="invite-foot">Please RSVP by September 1, 2026</p>
+        </div>
+    </section>
+{% endblock %}

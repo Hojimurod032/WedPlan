@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block title %}Add Guest — Évoque{% endblock %}
+
+{% block extra_style %}
+    .page-section{padding:48px 24px 80px;}
+    .form-wrap{max-width:640px;margin:0 auto;}
+    .page-head{margin-bottom:30px;}
+    .page-head
+    a.back{font-size:0.88rem;color:var(--ink-soft);margin-bottom:14px;display:inline-flex;align-items:center;gap:6px;}
+    .page-head h1{font-size:1.9rem;margin-bottom:4px;}
+    .page-head p{color:var(--ink-soft);margin:0;}
+
+    .form-card{padding:36px;}
+    .field{margin-bottom:20px;}
+    .field label{display:block;font-size:0.85rem;font-weight:600;margin-bottom:7px;}
+    .field input, .field select, .field textarea{
+    width:100%;padding:13px 16px;border-radius:var(--radius-sm);
+    border:1.5px solid rgba(43,42,38,0.12);font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:0.95rem;background:var(--cream);
+    }
+    .field input:focus, .field select:focus, .field
+    textarea:focus{outline:none;border-color:var(--sage-deep);background:var(--white);}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .field-hint{font-size:0.78rem;color:var(--ink-soft);margin-top:6px;}
+
+    .status-options{display:flex;gap:12px;flex-wrap:wrap;}
+    .status-option{
+    flex:1;min-width:120px;border:1.5px solid rgba(43,42,38,0.12);border-radius:var(--radius-md);
+    padding:14px;text-align:center;cursor:pointer;font-size:0.88rem;font-weight:600;color:var(--ink-soft);
+    }
+    .status-option.selected{border-color:var(--sage-deep);background:var(--sage-pale);color:var(--sage-deep);}
+
+    .form-actions{display:flex;gap:14px;margin-top:8px;}
+
+    @media (max-width:560px){
+    .field-row{grid-template-columns:1fr;}
+    .form-card{padding:26px;}
+    }
+{% endblock %}
+
+{% block content %}
+    <section class="page-section">
+        <div class="wrap form-wrap">
+            <div class="page-head">
+                <a href="#" class="back">&#8592; Back to guest list</a>
+                <h1>Add a guest</h1>
+                <p>Add someone to your wedding guest list.</p>
+            </div>
+
+            <form class="card form-card">
+                <div class="field">
+                    <label for="full_name">Full name</label>
+                    <input type="text" id="full_name" placeholder="e.g. Sophia Kerns">
+                </div>
+
+                <div class="field-row">
+                    <div class="field">
+                        <label for="email">Email address</label>
+                        <input type="email" id="email" placeholder="guest@email.com">
+                    </div>
+                    <div class="field">
+                        <label for="phone">Phone number</label>
+                        <input type="tel" id="phone" placeholder="+1 (555) 000-0000">
+                    </div>
+                </div>
+
+                <div class="field-row">
+                    <div class="field">
+                        <label for="group">Guest group</label>
+                        <select id="group">
+                            <option>Bride's family</option>
+                            <option>Groom's family</option>
+                            <option>Bride's friends</option>
+                            <option>Groom's friends</option>
+                            <option>Work colleagues</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="meal">Meal preference</label>
+                        <select id="meal">
+                            <option>Standard</option>
+                            <option>Vegetarian</option>
+                            <option>Vegan</option>
+                            <option>Gluten-free</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>RSVP status</label>
+                    <div class="status-options">
+                        <div class="status-option selected">Confirmed</div>
+                        <div class="status-option">Invited</div>
+                        <div class="status-option">Not coming</div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="notes">Notes (optional)</label>
+                    <textarea id="notes" rows="3" placeholder="Allergies, plus-ones, seating notes..."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Save guest</button>
+                    <a href="#" class="btn btn-outline">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}
