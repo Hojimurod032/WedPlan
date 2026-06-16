@@ -12,3 +12,8 @@ class RegisterViewList(TemplateView):
 class HomeViewList(TemplateView):
     template_name = 'Home.html'
 
+class InviteCreateList(TemplateView):
+    template_name = 'InviteCreate.html'
+
+class InviteShareList(TemplateView):
+    template_name = 'Intiniteshare.html'
