@@ -30,7 +30,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'root.urls'
-# AUTH_USER_MODEL = "apps.User"
+AUTH_USER_MODEL = "apps.User"
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'login'
 TEMPLATES = [
