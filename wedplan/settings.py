@@ -91,7 +91,24 @@ TIME_ZONE = 'Asia/Tashkent'
 USE_I18N = True
 
 USE_TZ = True
+LANGUAGES = [
+    ('uz', 'Uzbek'),
+    ('ru', 'Russian'),
+]
 
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'uz'},
+        {'code': 'ru'},
+    ),
+    'default': {
+        'fallbacks': ['uz'],
+        'hide_untranslated': False,
+    }
+}
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "apps/static",
