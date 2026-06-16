@@ -2,114 +2,116 @@
 {% block title %}Create Invitation — Évoque{% endblock %}
 
 {% block extra_style %}
-.page-section{padding:48px 24px 80px;}
-.page-head{margin-bottom:30px;}
-.page-head h1{font-size:2rem;margin-bottom:4px;}
-.page-head p{color:var(--ink-soft);margin:0;}
+    .page-section{padding:48px 24px 80px;}
+    .page-head{margin-bottom:30px;}
+    .page-head h1{font-size:2rem;margin-bottom:4px;}
+    .page-head p{color:var(--ink-soft);margin:0;}
 
-.editor-layout{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;}
+    .editor-layout{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;}
 
-.editor-card{padding:30px;}
-.editor-card h3{font-size:1.05rem;margin-bottom:18px;}
-.field{margin-bottom:18px;}
-.field label{display:block;font-size:0.85rem;font-weight:600;margin-bottom:7px;}
-.field input, .field textarea, .field select{
-  width:100%;padding:12px 16px;border-radius:var(--radius-sm);
-  border:1.5px solid rgba(43,42,38,0.12);font-family:'Plus Jakarta Sans',sans-serif;
-  font-size:0.92rem;background:var(--cream);
-}
-.field input:focus, .field textarea:focus, .field select:focus{outline:none;border-color:var(--sage-deep);background:var(--white);}
-.field textarea{resize:vertical;min-height:120px;}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    .editor-card{padding:30px;}
+    .editor-card h3{font-size:1.05rem;margin-bottom:18px;}
+    .field{margin-bottom:18px;}
+    .field label{display:block;font-size:0.85rem;font-weight:600;margin-bottom:7px;}
+    .field input, .field textarea, .field select{
+    width:100%;padding:12px 16px;border-radius:var(--radius-sm);
+    border:1.5px solid rgba(43,42,38,0.12);font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:0.92rem;background:var(--cream);
+    }
+    .field input:focus, .field textarea:focus, .field
+    select:focus{outline:none;border-color:var(--sage-deep);background:var(--white);}
+    .field textarea{resize:vertical;min-height:120px;}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 
-.theme-swatches{display:flex;gap:12px;}
-.swatch{
-  width:42px;height:42px;border-radius:50%;cursor:pointer;border:3px solid transparent;
-}
-.swatch.selected{border-color:var(--sage-deep);}
+    .theme-swatches{display:flex;gap:12px;}
+    .swatch{
+    width:42px;height:42px;border-radius:50%;cursor:pointer;border:3px solid transparent;
+    }
+    .swatch.selected{border-color:var(--sage-deep);}
 
-.preview-wrap{position:sticky;top:90px;}
-.preview-label{font-size:0.85rem;font-weight:600;color:var(--ink-soft);margin-bottom:14px;display:block;}
-.preview-box{
-  background:linear-gradient(160deg, #FBF6EE, var(--sage-pale));
-  border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);
-  padding:60px 40px;text-align:center;min-height:440px;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  border:1px solid rgba(43,42,38,0.06);
-}
-.preview-box .orn{font-size:1.6rem;color:var(--sage-deep);margin-bottom:18px;}
-.preview-box .pre-title{font-family:'Fraunces',serif;font-style:italic;color:var(--ink-soft);font-size:1rem;margin-bottom:8px;}
-.preview-box h2{font-family:'Fraunces',serif;font-size:2.1rem;margin-bottom:18px;}
-.preview-box p{color:var(--ink-soft);font-size:0.95rem;max-width:340px;margin:0 auto;}
-.preview-box .pre-date{
-  margin-top:26px;font-weight:700;letter-spacing:0.05em;font-size:0.9rem;color:var(--sage-deep);
-  text-transform:uppercase;
-}
-.preview-actions{display:flex;gap:12px;margin-top:18px;}
+    .preview-wrap{position:sticky;top:90px;}
+    .preview-label{font-size:0.85rem;font-weight:600;color:var(--ink-soft);margin-bottom:14px;display:block;}
+    .preview-box{
+    background:linear-gradient(160deg, #FBF6EE, var(--sage-pale));
+    border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);
+    padding:60px 40px;text-align:center;min-height:440px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    border:1px solid rgba(43,42,38,0.06);
+    }
+    .preview-box .orn{font-size:1.6rem;color:var(--sage-deep);margin-bottom:18px;}
+    .preview-box
+    .pre-title{font-family:'Fraunces',serif;font-style:italic;color:var(--ink-soft);font-size:1rem;margin-bottom:8px;}
+    .preview-box h2{font-family:'Fraunces',serif;font-size:2.1rem;margin-bottom:18px;}
+    .preview-box p{color:var(--ink-soft);font-size:0.95rem;max-width:340px;margin:0 auto;}
+    .preview-box .pre-date{
+    margin-top:26px;font-weight:700;letter-spacing:0.05em;font-size:0.9rem;color:var(--sage-deep);
+    text-transform:uppercase;
+    }
+    .preview-actions{display:flex;gap:12px;margin-top:18px;}
 
-@media (max-width:900px){
-  .editor-layout{grid-template-columns:1fr;}
-  .preview-wrap{position:static;}
-  .field-row{grid-template-columns:1fr;}
-}
+    @media (max-width:900px){
+    .editor-layout{grid-template-columns:1fr;}
+    .preview-wrap{position:static;}
+    .field-row{grid-template-columns:1fr;}
+    }
 {% endblock %}
 
 {% block content %}
-<section class="page-section">
-  <div class="wrap">
-    <div class="page-head">
-      <h1>Create your invitation</h1>
-      <p>Design a digital invitation to share with your guests.</p>
-    </div>
+    <section class="page-section">
+        <div class="wrap">
+            <div class="page-head">
+                <h1>Create your invitation</h1>
+                <p>Design a digital invitation to share with your guests.</p>
+            </div>
 
-    <div class="editor-layout">
-      <div class="card editor-card">
-        <h3>Details</h3>
-        <div class="field-row">
-          <div class="field">
-            <label for="couple">Couple names</label>
-            <input type="text" id="couple" value="Amara &amp; James">
-          </div>
-          <div class="field">
-            <label for="date">Wedding date</label>
-            <input type="text" id="date" value="October 17, 2026">
-          </div>
-        </div>
-        <div class="field">
-          <label for="venue">Venue</label>
-          <input type="text" id="venue" value="Lakeview Gardens, Dripping Springs, TX">
-        </div>
-        <div class="field">
-          <label for="message">Invitation message</label>
-          <textarea id="message">Together with our families, we joyfully invite you to celebrate our wedding. Your presence would mean the world to us as we begin this new chapter.</textarea>
-        </div>
-        <div class="field">
-          <label>Theme color</label>
-          <div class="theme-swatches">
-            <div class="swatch selected" style="background:var(--sage-deep);"></div>
-            <div class="swatch" style="background:var(--blush);"></div>
-            <div class="swatch" style="background:var(--gold);"></div>
-            <div class="swatch" style="background:#8A93B0;"></div>
-            <div class="swatch" style="background:#2B2A26;"></div>
-          </div>
-        </div>
-        <button class="btn btn-primary btn-block">Save invitation</button>
-      </div>
+            <div class="editor-layout">
+                <div class="card editor-card">
+                    <h3>Details</h3>
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="couple">Couple names</label>
+                            <input type="text" id="couple" value="Amara &amp; James">
+                        </div>
+                        <div class="field">
+                            <label for="date">Wedding date</label>
+                            <input type="text" id="date" value="October 17, 2026">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="venue">Venue</label>
+                        <input type="text" id="venue" value="Lakeview Gardens, Dripping Springs, TX">
+                    </div>
+                    <div class="field">
+                        <label for="message">Invitation message</label>
+                        <textarea id="message">Together with our families, we joyfully invite you to celebrate our wedding. Your presence would mean the world to us as we begin this new chapter.</textarea>
+                    </div>
+                    <div class="field">
+                        <label>Theme color</label>
+                        <div class="theme-swatches">
+                            <div class="swatch selected" style="background:var(--sage-deep);"></div>
+                            <div class="swatch" style="background:var(--blush);"></div>
+                            <div class="swatch" style="background:var(--gold);"></div>
+                            <div class="swatch" style="background:#8A93B0;"></div>
+                            <div class="swatch" style="background:#2B2A26;"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-block">Save invitation</button>
+                </div>
 
-      <div class="preview-wrap">
-        <span class="preview-label">Live preview</span>
-        <div class="preview-box">
-          <div class="orn">&#10047;</div>
-          <div class="pre-title">Together with their families</div>
-          <h2>Amara &amp; James</h2>
-          <p>Joyfully invite you to celebrate their wedding at Lakeview Gardens, Dripping Springs, TX.</p>
-          <div class="pre-date">October 17, 2026</div>
+                <div class="preview-wrap">
+                    <span class="preview-label">Live preview</span>
+                    <div class="preview-box">
+                        <div class="orn">&#10047;</div>
+                        <div class="pre-title">Together with their families</div>
+                        <h2>Amara &amp; James</h2>
+                        <p>Joyfully invite you to celebrate their wedding at Lakeview Gardens, Dripping Springs, TX.</p>
+                        <div class="pre-date">October 17, 2026</div>
+                    </div>
+                    <div class="preview-actions">
+                        <button class="btn btn-outline btn-block">Preview full screen</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="preview-actions">
-          <button class="btn btn-outline btn-block">Preview full screen</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 {% endblock %}

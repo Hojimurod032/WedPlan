@@ -2,145 +2,158 @@
 {% block title %}Vendors — Évoque{% endblock %}
 
 {% block extra_style %}
-.page-section{padding:48px 24px 80px;}
-.page-head{margin-bottom:30px;}
-.page-head h1{font-size:2rem;margin-bottom:4px;}
-.page-head p{color:var(--ink-soft);margin:0;}
+    .page-section{padding:48px 24px 80px;}
+    .page-head{margin-bottom:30px;}
+    .page-head h1{font-size:2rem;margin-bottom:4px;}
+    .page-head p{color:var(--ink-soft);margin:0;}
 
-.vendor-layout{display:grid;grid-template-columns:260px 1fr;gap:28px;}
+    .vendor-layout{display:grid;grid-template-columns:260px 1fr;gap:28px;}
 
-.sidebar{padding:24px;align-self:start;position:sticky;top:90px;}
-.sidebar h3{font-size:1rem;margin-bottom:18px;}
-.filter-group{margin-bottom:24px;}
-.filter-group:last-child{margin-bottom:0;}
-.filter-group h4{font-size:0.82rem;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);margin-bottom:12px;}
-.filter-check{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:0.9rem;}
-.filter-check input{accent-color:var(--sage-deep);width:16px;height:16px;}
-.price-pills{display:flex;gap:8px;}
-.price-pill{
-  flex:1;text-align:center;padding:8px 0;border-radius:8px;border:1.5px solid rgba(43,42,38,0.12);
-  font-size:0.85rem;font-weight:600;cursor:pointer;color:var(--ink-soft);
-}
-.price-pill.selected{border-color:var(--sage-deep);background:var(--sage-pale);color:var(--sage-deep);}
+    .sidebar{padding:24px;align-self:start;position:sticky;top:90px;}
+    .sidebar h3{font-size:1rem;margin-bottom:18px;}
+    .filter-group{margin-bottom:24px;}
+    .filter-group:last-child{margin-bottom:0;}
+    .filter-group
+    h4{font-size:0.82rem;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);margin-bottom:12px;}
+    .filter-check{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:0.9rem;}
+    .filter-check input{accent-color:var(--sage-deep);width:16px;height:16px;}
+    .price-pills{display:flex;gap:8px;}
+    .price-pill{
+    flex:1;text-align:center;padding:8px 0;border-radius:8px;border:1.5px solid rgba(43,42,38,0.12);
+    font-size:0.85rem;font-weight:600;cursor:pointer;color:var(--ink-soft);
+    }
+    .price-pill.selected{border-color:var(--sage-deep);background:var(--sage-pale);color:var(--sage-deep);}
 
-.vendor-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
-.vendor-card{
-  background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);
-  overflow:hidden;transition:transform .2s ease, box-shadow .2s ease;
-}
-.vendor-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-soft);}
-.vendor-thumb{
-  height:170px;background:linear-gradient(135deg, var(--sage-pale), var(--blush));
-  display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(43,42,38,0.25);
-}
-.vendor-body{padding:20px 22px;}
-.vendor-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px;}
-.vendor-top h3{font-size:1.1rem;margin:0;}
-.vendor-rating{display:flex;align-items:center;gap:4px;font-size:0.82rem;font-weight:700;color:var(--gold);white-space:nowrap;}
-.vendor-cat{font-size:0.82rem;color:var(--sage-deep);font-weight:600;margin-bottom:10px;}
-.vendor-loc{font-size:0.85rem;color:var(--ink-soft);margin-bottom:14px;}
-.vendor-foot{display:flex;align-items:center;justify-content:space-between;}
-.vendor-price{font-size:0.9rem;font-weight:700;}
+    .vendor-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+    .vendor-card{
+    background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);
+    overflow:hidden;transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .vendor-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-soft);}
+    .vendor-thumb{
+    height:170px;background:linear-gradient(135deg, var(--sage-pale), var(--blush));
+    display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(43,42,38,0.25);
+    }
+    .vendor-body{padding:20px 22px;}
+    .vendor-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px;}
+    .vendor-top h3{font-size:1.1rem;margin:0;}
+    .vendor-rating{display:flex;align-items:center;gap:4px;font-size:0.82rem;font-weight:700;color:var(--gold);white-space:nowrap;}
+    .vendor-cat{font-size:0.82rem;color:var(--sage-deep);font-weight:600;margin-bottom:10px;}
+    .vendor-loc{font-size:0.85rem;color:var(--ink-soft);margin-bottom:14px;}
+    .vendor-foot{display:flex;align-items:center;justify-content:space-between;}
+    .vendor-price{font-size:0.9rem;font-weight:700;}
 
-@media (max-width:900px){
-  .vendor-layout{grid-template-columns:1fr;}
-  .sidebar{position:static;}
-  .vendor-grid{grid-template-columns:1fr;}
-}
+    @media (max-width:900px){
+    .vendor-layout{grid-template-columns:1fr;}
+    .sidebar{position:static;}
+    .vendor-grid{grid-template-columns:1fr;}
+    }
 {% endblock %}
 
 {% block content %}
-<section class="page-section">
-  <div class="wrap">
-    <div class="page-head">
-      <h1>Find your vendors</h1>
-      <p>Browse trusted photographers, florists, caterers and more.</p>
-    </div>
+    <section class="page-section">
+        <div class="wrap">
+            <div class="page-head">
+                <h1>Find your vendors</h1>
+                <p>Browse trusted photographers, florists, caterers and more.</p>
+            </div>
 
-    <div class="vendor-layout">
-      <aside class="card sidebar">
-        <h3>Filters</h3>
-        <div class="filter-group">
-          <h4>Category</h4>
-          <label class="filter-check"><input type="checkbox" checked> Photography</label>
-          <label class="filter-check"><input type="checkbox"> Catering</label>
-          <label class="filter-check"><input type="checkbox"> Florist</label>
-          <label class="filter-check"><input type="checkbox"> Music &amp; DJ</label>
-          <label class="filter-check"><input type="checkbox"> Venue</label>
-        </div>
-        <div class="filter-group">
-          <h4>Price range</h4>
-          <div class="price-pills">
-            <div class="price-pill">$</div>
-            <div class="price-pill selected">$$</div>
-            <div class="price-pill">$$$</div>
-          </div>
-        </div>
-        <div class="filter-group">
-          <h4>Rating</h4>
-          <label class="filter-check"><input type="checkbox" checked> 4.5 &amp; up</label>
-          <label class="filter-check"><input type="checkbox"> 4.0 &amp; up</label>
-          <label class="filter-check"><input type="checkbox"> 3.5 &amp; up</label>
-        </div>
-      </aside>
+            <div class="vendor-layout">
+                <aside class="card sidebar">
+                    <h3>Filters</h3>
+                    <div class="filter-group">
+                        <h4>Category</h4>
+                        <label class="filter-check"><input type="checkbox" checked> Photography</label>
+                        <label class="filter-check"><input type="checkbox"> Catering</label>
+                        <label class="filter-check"><input type="checkbox"> Florist</label>
+                        <label class="filter-check"><input type="checkbox"> Music &amp; DJ</label>
+                        <label class="filter-check"><input type="checkbox"> Venue</label>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Price range</h4>
+                        <div class="price-pills">
+                            <div class="price-pill">$</div>
+                            <div class="price-pill selected">$$</div>
+                            <div class="price-pill">$$$</div>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Rating</h4>
+                        <label class="filter-check"><input type="checkbox" checked> 4.5 &amp; up</label>
+                        <label class="filter-check"><input type="checkbox"> 4.0 &amp; up</label>
+                        <label class="filter-check"><input type="checkbox"> 3.5 &amp; up</label>
+                    </div>
+                </aside>
 
-      <div class="vendor-grid">
-        <a href="#" class="vendor-card">
-          <div class="vendor-thumb">&#128247;</div>
-          <div class="vendor-body">
-            <div class="vendor-top"><h3>Willowbrook Studio</h3><span class="vendor-rating">&#9733; 4.9</span></div>
-            <div class="vendor-cat">Photography</div>
-            <div class="vendor-loc">&#128205; Austin, TX</div>
-            <div class="vendor-foot"><span class="vendor-price">From $2,400</span><span class="btn btn-outline btn-sm">View</span></div>
-          </div>
-        </a>
-        <a href="#" class="vendor-card">
-          <div class="vendor-thumb">&#127801;</div>
-          <div class="vendor-body">
-            <div class="vendor-top"><h3>Petal &amp; Stem</h3><span class="vendor-rating">&#9733; 4.8</span></div>
-            <div class="vendor-cat">Florist</div>
-            <div class="vendor-loc">&#128205; Austin, TX</div>
-            <div class="vendor-foot"><span class="vendor-price">From $900</span><span class="btn btn-outline btn-sm">View</span></div>
-          </div>
-        </a>
-        <a href="#" class="vendor-card">
-          <div class="vendor-thumb">&#127860;</div>
-          <div class="vendor-body">
-            <div class="vendor-top"><h3>Saffron Table Catering</h3><span class="vendor-rating">&#9733; 4.7</span></div>
-            <div class="vendor-cat">Catering</div>
-            <div class="vendor-loc">&#128205; Round Rock, TX</div>
-            <div class="vendor-foot"><span class="vendor-price">From $48/guest</span><span class="btn btn-outline btn-sm">View</span></div>
-          </div>
-        </a>
-        <a href="#" class="vendor-card">
-          <div class="vendor-thumb">&#127925;</div>
-          <div class="vendor-body">
-            <div class="vendor-top"><h3>Reverie Sound Co.</h3><span class="vendor-rating">&#9733; 4.9</span></div>
-            <div class="vendor-cat">Music &amp; DJ</div>
-            <div class="vendor-loc">&#128205; Austin, TX</div>
-            <div class="vendor-foot"><span class="vendor-price">From $1,200</span><span class="btn btn-outline btn-sm">View</span></div>
-          </div>
-        </a>
-        <a href="#" class="vendor-card">
-          <div class="vendor-thumb">&#127868;</div>
-          <div class="vendor-body">
-            <div class="vendor-top"><h3>Lakeview Gardens</h3><span class="vendor-rating">&#9733; 4.8</span></div>
-            <div class="vendor-cat">Venue</div>
-            <div class="vendor-loc">&#128205; Dripping Springs, TX</div>
-            <div class="vendor-foot"><span class="vendor-price">From $6,500</span><span class="btn btn-outline btn-sm">View</span></div>
-          </div>
-        </a>
-        <a href="#" class="vendor-card">
-          <div class="vendor-thumb">&#127856;</div>
-          <div class="vendor-body">
-            <div class="vendor-top"><h3>Honeycomb Cakery</h3><span class="vendor-rating">&#9733; 5.0</span></div>
-            <div class="vendor-cat">Cake &amp; desserts</div>
-            <div class="vendor-loc">&#128205; Austin, TX</div>
-            <div class="vendor-foot"><span class="vendor-price">From $650</span><span class="btn btn-outline btn-sm">View</span></div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+                <div class="vendor-grid">
+                    <a href="#" class="vendor-card">
+                        <div class="vendor-thumb">&#128247;</div>
+                        <div class="vendor-body">
+                            <div class="vendor-top"><h3>Willowbrook Studio</h3><span
+                                    class="vendor-rating">&#9733; 4.9</span></div>
+                            <div class="vendor-cat">Photography</div>
+                            <div class="vendor-loc">&#128205; Austin, TX</div>
+                            <div class="vendor-foot"><span class="vendor-price">From $2,400</span><span
+                                    class="btn btn-outline btn-sm">View</span></div>
+                        </div>
+                    </a>
+                    <a href="#" class="vendor-card">
+                        <div class="vendor-thumb">&#127801;</div>
+                        <div class="vendor-body">
+                            <div class="vendor-top"><h3>Petal &amp; Stem</h3><span
+                                    class="vendor-rating">&#9733; 4.8</span></div>
+                            <div class="vendor-cat">Florist</div>
+                            <div class="vendor-loc">&#128205; Austin, TX</div>
+                            <div class="vendor-foot"><span class="vendor-price">From $900</span><span
+                                    class="btn btn-outline btn-sm">View</span></div>
+                        </div>
+                    </a>
+                    <a href="#" class="vendor-card">
+                        <div class="vendor-thumb">&#127860;</div>
+                        <div class="vendor-body">
+                            <div class="vendor-top"><h3>Saffron Table Catering</h3><span class="vendor-rating">&#9733; 4.7</span>
+                            </div>
+                            <div class="vendor-cat">Catering</div>
+                            <div class="vendor-loc">&#128205; Round Rock, TX</div>
+                            <div class="vendor-foot"><span class="vendor-price">From $48/guest</span><span
+                                    class="btn btn-outline btn-sm">View</span></div>
+                        </div>
+                    </a>
+                    <a href="#" class="vendor-card">
+                        <div class="vendor-thumb">&#127925;</div>
+                        <div class="vendor-body">
+                            <div class="vendor-top"><h3>Reverie Sound Co.</h3><span
+                                    class="vendor-rating">&#9733; 4.9</span></div>
+                            <div class="vendor-cat">Music &amp; DJ</div>
+                            <div class="vendor-loc">&#128205; Austin, TX</div>
+                            <div class="vendor-foot"><span class="vendor-price">From $1,200</span><span
+                                    class="btn btn-outline btn-sm">View</span></div>
+                        </div>
+                    </a>
+                    <a href="#" class="vendor-card">
+                        <div class="vendor-thumb">&#127868;</div>
+                        <div class="vendor-body">
+                            <div class="vendor-top"><h3>Lakeview Gardens</h3><span
+                                    class="vendor-rating">&#9733; 4.8</span></div>
+                            <div class="vendor-cat">Venue</div>
+                            <div class="vendor-loc">&#128205; Dripping Springs, TX</div>
+                            <div class="vendor-foot"><span class="vendor-price">From $6,500</span><span
+                                    class="btn btn-outline btn-sm">View</span></div>
+                        </div>
+                    </a>
+                    <a href="#" class="vendor-card">
+                        <div class="vendor-thumb">&#127856;</div>
+                        <div class="vendor-body">
+                            <div class="vendor-top"><h3>Honeycomb Cakery</h3><span
+                                    class="vendor-rating">&#9733; 5.0</span></div>
+                            <div class="vendor-cat">Cake &amp; desserts</div>
+                            <div class="vendor-loc">&#128205; Austin, TX</div>
+                            <div class="vendor-foot"><span class="vendor-price">From $650</span><span
+                                    class="btn btn-outline btn-sm">View</span></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
