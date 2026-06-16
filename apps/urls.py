@@ -14,5 +14,6 @@ urlpatterns = [
     path('task-list', TaskViewList.as_view(), name="task-list"),
     path('Dashboard', DashboardViewList.as_view(), name="dashboard"),
     path('invite-create', InviteCreateList.as_view(), name="invite-create"),
-    path('invite-share', InviteShareView.as_view(), name="invite-share")
+    path('invite-share', InviteShareView.as_view(), name="invite-share"),
+    path('budget-list', BudgetListView.as_view(), name="budget-list")
 ]
