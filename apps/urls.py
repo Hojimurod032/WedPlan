@@ -9,7 +9,7 @@ urlpatterns = [
     path('login', LoginViewList.as_view(), name="login"),
     path('vendordetail' , VenderListView.as_view(), name="vendor-detail"),
     path('vendorlist' , VenderListView.as_view(), name="vendor-list"),
-    path('tasklist' , TaskListView.as_view(), name="task-list"),
+    path('tasklist' , TaskView.as_view(), name="task-list"),
     path('Dashboard' , DashboardView.as_view(), name="dashboard"),
 
 ]
