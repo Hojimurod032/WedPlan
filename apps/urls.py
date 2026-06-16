@@ -9,4 +9,8 @@ urlpatterns = [
     path('login', LoginViewList.as_view(), name="login"),
     path('guest-add', GuestAddCreateView.as_view(), name='guest-add'),
     path('guest-list', GuestListView.as_view(), name='guest-add')
+    path('login', LoginViewList.as_view(), name="login"),
+    path('vendordetail' , VenderListView.as_view(), name="vendor-detail"),
+    path('vendorlist' , VenderListView.as_view(), name="vendor-list"),
+
 ]
