@@ -15,5 +15,17 @@ class HomeViewList(TemplateView):
 class InviteCreateList(TemplateView):
     template_name = 'InviteCreate.html'
 
-class InviteShareList(TemplateView):
-    template_name = 'Intiniteshare.html'
+class VenderDetailViewList(TemplateView):
+    template_name = 'VendorDetail.html'
+
+
+class VenderListView(TemplateView):
+    template_name = 'VendorList.html'
+
+
+
+class DashboardViewList(TemplateView):
+    template_name = 'Dashboard.html'
+
+class TaskViewList(TemplateView):
+    template_name = 'Task.html'
