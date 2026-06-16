@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 class LoginViewList(TemplateView):
     template_name = 'Auth/Login.html'
 
+
 class RegisterViewList(TemplateView):
     template_name = 'Auth/Register.html'
 
@@ -31,8 +32,7 @@ class DashboardViewList(TemplateView):
     template_name = 'Dashboard.html'
 
 class TaskViewList(TemplateView):
-    template_name = 'Task.html'\
-
+    template_name = 'Task.html'
 class GuestAddCreateView(TemplateView):
     template_name = 'GuestAdd.html'
 
