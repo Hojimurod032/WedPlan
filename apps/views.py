@@ -81,3 +81,6 @@ class GuestListView(TemplateView):
 
 class BudgetListView(TemplateView):
     template_name = 'BudgetList.html'
+
+class BudgetAddCreateView(TemplateView):
+    template_name = 'BudgetAdd.html'

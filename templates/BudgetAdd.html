@@ -62,6 +62,96 @@
     .mini-bar{width:120px;height:6px;border-radius:999px;background:var(--cream-deep);margin-top:6px;overflow:hidden;}
     .mini-bar-fill{height:100%;border-radius:999px;}
 
+    /* ── Add Expense Modal ── */
+    .modal-backdrop{
+        position:fixed;inset:0;background:rgba(43,42,38,0.45);
+        backdrop-filter:blur(3px);
+        display:flex;align-items:center;justify-content:center;
+        z-index:900;
+        opacity:0;pointer-events:none;
+        transition:opacity 0.22s ease;
+    }
+    .modal-backdrop.open{opacity:1;pointer-events:all;}
+
+    .modal{
+        background:var(--white);border-radius:var(--radius-md);
+        width:100%;max-width:480px;
+        box-shadow:0 16px 48px rgba(43,42,38,0.18);
+        transform:translateY(18px) scale(0.98);
+        transition:transform 0.26s cubic-bezier(.22,.68,0,1.1),opacity 0.22s ease;
+        opacity:0;
+        overflow:hidden;
+    }
+    .modal-backdrop.open .modal{transform:translateY(0) scale(1);opacity:1;}
+
+    .modal-header{
+        display:flex;align-items:center;justify-content:space-between;
+        padding:24px 28px 20px;
+        border-bottom:1px solid rgba(43,42,38,0.07);
+    }
+    .modal-header h2{font-family:'Fraunces',serif;font-size:1.25rem;margin:0;}
+    .modal-close{
+        background:none;border:none;cursor:pointer;
+        width:32px;height:32px;border-radius:50%;
+        display:flex;align-items:center;justify-content:center;
+        color:var(--ink-soft);font-size:1.2rem;line-height:1;
+        transition:background 0.15s;
+    }
+    .modal-close:hover{background:var(--cream-deep);}
+
+    .modal-body{padding:26px 28px;}
+
+    .form-row{margin-bottom:20px;}
+    .form-row label{
+        display:block;font-size:0.8rem;font-weight:600;
+        letter-spacing:0.04em;text-transform:uppercase;
+        color:var(--ink-soft);margin-bottom:7px;
+    }
+    .form-row input,
+    .form-row select,
+    .form-row textarea{
+        width:100%;box-sizing:border-box;
+        padding:11px 14px;
+        border:1.5px solid rgba(43,42,38,0.15);
+        border-radius:var(--radius-sm, 8px);
+        font-size:0.95rem;font-family:inherit;
+        background:var(--cream,#FAF8F4);
+        color:var(--ink);
+        outline:none;
+        transition:border-color 0.15s;
+        appearance:none;
+    }
+    .form-row input:focus,
+    .form-row select:focus,
+    .form-row textarea:focus{border-color:var(--sage-deep);}
+    .form-row textarea{resize:vertical;min-height:76px;}
+
+    .form-row-split{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+
+    .amount-wrap{position:relative;}
+    .amount-wrap .currency{
+        position:absolute;left:14px;top:50%;transform:translateY(-50%);
+        color:var(--ink-soft);font-size:0.95rem;pointer-events:none;
+    }
+    .amount-wrap input{padding-left:28px;}
+
+    .cat-swatch{
+        display:inline-block;width:10px;height:10px;
+        border-radius:50%;margin-right:6px;vertical-align:middle;
+    }
+
+    .modal-footer{
+        display:flex;align-items:center;justify-content:flex-end;gap:12px;
+        padding:18px 28px 24px;
+    }
+    .btn-ghost{
+        background:none;border:1.5px solid rgba(43,42,38,0.18);
+        border-radius:999px;padding:10px 22px;
+        font-size:0.88rem;font-family:inherit;cursor:pointer;
+        color:var(--ink);transition:border-color 0.15s,background 0.15s;
+    }
+    .btn-ghost:hover{background:var(--cream-deep);}
+
     @media (max-width:900px){
     .budget-grid{grid-template-columns:1fr;}
     .summary-cards{grid-template-columns:1fr;}
@@ -70,6 +160,8 @@
     .budget-row{flex-direction:column;align-items:flex-start;gap:10px;}
     .budget-right{text-align:left;}
     .mini-bar{width:100%;}
+    .modal{margin:16px;max-width:calc(100% - 32px);}
+    .form-row-split{grid-template-columns:1fr;}
     }
 {% endblock %}
 
@@ -81,7 +173,7 @@
                     <h1>Budget</h1>
                     <p>Track spending across every wedding category.</p>
                 </div>
-                <a href="{% url 'budget-add' %}" class="btn btn-primary">+ Add expense</a>
+                <button class="btn btn-primary" onclick="openModal()">+ Add expense</button>
             </div>
 
             <div class="budget-grid">
@@ -188,4 +280,112 @@
             </div>
         </div>
     </section>
+
+    <!-- ── Add Expense Modal ── -->
+    <div class="modal-backdrop" id="expenseModal" onclick="handleBackdropClick(event)">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+
+            <div class="modal-header">
+                <h2 id="modalTitle">Add expense</h2>
+                <button class="modal-close" onclick="closeModal()" aria-label="Close">&#x2715;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-row">
+                    <label for="exp-name">Expense name</label>
+                    <input type="text" id="exp-name" placeholder="e.g. Florist deposit">
+                </div>
+
+                <div class="form-row-split">
+                    <div class="form-row">
+                        <label for="exp-amount">Amount paid</label>
+                        <div class="amount-wrap">
+                            <span class="currency">$</span>
+                            <input type="number" id="exp-amount" placeholder="0.00" min="0" step="0.01">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label for="exp-date">Date</label>
+                        <input type="date" id="exp-date">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <label for="exp-category">Category</label>
+                    <select id="exp-category">
+                        <option value="" disabled selected>Select a category</option>
+                        <option value="venue">🟢 Venue &amp; rentals</option>
+                        <option value="catering">🌸 Catering</option>
+                        <option value="photography">🟡 Photography &amp; video</option>
+                        <option value="decor">🍃 Décor &amp; flowers</option>
+                        <option value="attire">🤍 Attire &amp; misc.</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <label for="exp-vendor">Vendor / supplier <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-soft)">(optional)</span></label>
+                    <input type="text" id="exp-vendor" placeholder="e.g. Bloom &amp; Co.">
+                </div>
+
+                <div class="form-row" style="margin-bottom:0;">
+                    <label for="exp-note">Note <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-soft)">(optional)</span></label>
+                    <textarea id="exp-note" placeholder="Any details worth remembering…"></textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-ghost" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveExpense()">Save expense</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('expenseModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+            // pre-fill today's date
+            const d = new Date();
+            const iso = d.toISOString().split('T')[0];
+            document.getElementById('exp-date').value = iso;
+        }
+
+        function closeModal() {
+            document.getElementById('expenseModal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function handleBackdropClick(e) {
+            if (e.target === document.getElementById('expenseModal')) closeModal();
+        }
+
+        function saveExpense() {
+            const name     = document.getElementById('exp-name').value.trim();
+            const amount   = document.getElementById('exp-amount').value;
+            const category = document.getElementById('exp-category').value;
+
+            if (!name || !amount || !category) {
+                // simple inline shake — no alert() popups
+                ['exp-name','exp-amount','exp-category'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (!el.value.trim()) {
+                        el.style.borderColor = '#C9786A';
+                        el.addEventListener('input', () => el.style.borderColor = '', {once:true});
+                    }
+                });
+                return;
+            }
+
+            // TODO: wire to backend / Django form POST
+            closeModal();
+            // reset
+            ['exp-name','exp-amount','exp-vendor','exp-note'].forEach(id => document.getElementById(id).value = '');
+            document.getElementById('exp-category').selectedIndex = 0;
+        }
+
+        // Close on Escape
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
 {% endblock %}

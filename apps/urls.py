@@ -15,5 +15,6 @@ urlpatterns = [
     path('Dashboard', DashboardViewList.as_view(), name="dashboard"),
     path('invite-create', InviteCreateList.as_view(), name="invite-create"),
     path('invite-share', InviteShareView.as_view(), name="invite-share"),
-    path('budget-list', BudgetListView.as_view(), name="budget-list")
+    path('budget-list', BudgetListView.as_view(), name="budget-list"),
+    path('budget-add', BudgetAddCreateView.as_view(), name="budget-add")
 ]
