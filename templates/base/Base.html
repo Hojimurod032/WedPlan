@@ -363,14 +363,18 @@
             <li><a href="{% url 'task-list' %}">Tasks</a></li>
             <li><a href="{% url 'vendor-list' %}">Vendors</a></li>
         </ul>
-        <div class="nav-actions">
-            <a href="{% url 'login' %}" class="btn btn-outline btn-sm">Log in</a>
-            <a href="{% url 'register' %}" class="btn btn-primary btn-sm">Sign up</a>
-            <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')"
-                    aria-label="Toggle navigation">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
+        {% if request.user %}
+            <p class="btn btn-outline btn-sm">{{ request.user.first_name }}</p>
+        {% else %}
+            <div class="nav-actions">
+                <a href="{% url 'login' %}" class="btn btn-outline btn-sm">Log in</a>
+                <a href="{% url 'register' %}" class="btn btn-primary btn-sm">Sign up</a>
+                <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')"
+                        aria-label="Toggle navigation">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        {% endif %}
     </div>
 </nav>
 
