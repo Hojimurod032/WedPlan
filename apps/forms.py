@@ -28,7 +28,7 @@ class RegisterForm(ModelForm):
         return phone_number
 
 
-class LoginForm(UserCreationForm):
+class LoginForm(ModelForm):
     class Meta:
         model = User
         fields = ('phone_number', 'password')

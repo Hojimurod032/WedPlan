@@ -1,8 +1,8 @@
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import AbstractUser
-from django.db.models import CharField, DateTimeField, Model, TextField, ForeignKey, CASCADE, TextChoices, DecimalField, \
-    DateField, ImageField
+from django.db.models import CharField, DateTimeField, Model, TextField, ForeignKey, CASCADE, TextChoices, ImageField, \
+    DecimalField
 
 
 class CustomUserManager(BaseUserManager):
